@@ -1,0 +1,11 @@
+DateTime
+docxtpl
+Flask
+mysql-connector-python
+openpyxl
+flask-cors
+python-docx
+Pillow
+gTTS
+playsound
+pyttsx3
