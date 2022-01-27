@@ -805,8 +805,8 @@ License: https://themeforest.net/licenses/standard
 	ln_backgrounds();
     ln_magnificPopup();
     ln_countdown();
-    ln_subscribeForm();
-    ln_contactForm();
+    // ln_subscribeForm();
+    // ln_contactForm();
   });
 
   $(window).on('load', function(){
