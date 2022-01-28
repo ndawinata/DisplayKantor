@@ -55,7 +55,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title">Ruangan yang dituju</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <button onclick="handlestop()" type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
@@ -74,7 +74,7 @@
         const handlestop = () => {
             audioElement.pause();
             $('#mymodal').modal('hide');
-            setTimeout(()=>{history.back()}, 5000)
+            setTimeout(()=>{document.location.href="/"}, 3000)
         }
         var audioElement = document.createElement('audio');
         audioElement.setAttribute('src', '/static/assets/sound/{{file}}.mp3');

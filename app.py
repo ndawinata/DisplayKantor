@@ -61,6 +61,11 @@ def handleTamu():
         
         return render_template('success.html', file=kode)
 
+@app.route('/bukutamu/<kode>', methods=['GET', 'POST'])
+def bukutamu(kode):
+    print(kode)
+    return render_template('bukutamu.html', kode=kode)
+
 @app.route('/texttoaudio', methods=['GET', 'POST'])
 def texttoaudio():
     if request.method == 'POST':

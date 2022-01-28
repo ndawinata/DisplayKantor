@@ -122,6 +122,7 @@
     // var submitBtn = document.getElementById("sig-submitBtn");
     var submitBtn = document.getElementById("submit");
     clearBtn.addEventListener("click", function(e) {
+      e.preventDefault()
       clearCanvas();
       sigText.innerHTML = "Data URL for your signature will go here!";
       sigImage.setAttribute("src", "");

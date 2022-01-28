@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en-US" class="no-js">
+
+<head>
+
+  <!-- Title -->
+  <title>BMKG NTT</title>
+
+  <!-- Required Meta Tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Bootstrap HTML template and UI kit by Erilisdesign">
+  <link rel="shortcut icon" href="https://bmkg.go.id/asset/img/favicon.ico" type="image/x-icon">
+  <!-- Libs CSS -->
+  <link rel="stylesheet" href="/static/assets/vendor/fullPage.js/dist/jquery.fullpage.min.css" type="text/css">
+  <link rel="stylesheet" href="/static/assets/vendor/slick/slick.min.css" type="text/css">
+  <link rel="stylesheet" href="/static/assets/vendor/vegas/vegas.min.css" type="text/css">
+  <link rel="stylesheet" href="/static/assets/vendor/magnific-popup/dist/magnific-popup.min.css" type="text/css">
+  <link rel="stylesheet" href="/static/assets/vendor/animate.css/animate.min.css" type="text/css">
+  <link rel="stylesheet" href="/static/assets/vendor/font-awesome/css/all.min.css" type="text/css">
+  <link rel="stylesheet" href="/static/assets/vendor/themify-icons/css/themify-icons.css" type="text/css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <!-- Fonts -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Open+Sans:400,700%7CMontserrat:200,300,400,500,700&display=swap">
+
+  <!-- Theme CSS -->
+  <link rel="stylesheet" href="/static/assets/css/theme.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/static/assets/css/custom.css">
+
+  <link href="https://unpkg.com/tabulator-tables/dist/css/tabulator.min.css" rel="stylesheet">
+  <script type="text/javascript" src="https://unpkg.com/tabulator-tables/dist/js/tabulator.min.js"></script>
+
+</head>
+
+<body class="layout-wide">
+
+  <!-- Loader -->
+  <div class="loader bg-dark">
+    <div class="spinner-grow text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+  <div id="top"></div>
+
+  <!-- Site navigation -->
+  <nav
+    class="site-navbar site-navbar-transparent navbar navbar-expand-lg navbar-dark fixed-top bg-white shadow-light p-lg-4"
+    data-navbar-base="navbar-dark" data-navbar-toggled="navbar-light" data-navbar-scrolled="navbar-light">
+
+    <!-- Brand -->
+    <a class="navbar-brand" href="/">
+      <img src="/static/assets/images/bmkgntt.png" class="navbar-brand-img" alt="">
+    </a>
+
+    <!-- Toggler -->
+    <button class="navbar-toggler-alternative" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-alternative-icon"></span>
+    </button>
+
+    <!-- Collapse -->
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+
+      <!-- Navigation -->
+      {% include 'navbar.html' %}
+      <!-- Button -->
+      <!-- <button type="button" class="btn btn-soft-white d-block d-lg-none d-xl-inline-block mb-3 mb-lg-0 ml-lg-3 w-100 w-lg-auto" data-toggle="modal" data-target="#documentationModal" data-on-navbar-light="btn-soft-secondary" data-on-navbar-dark="btn-soft-white">Documentation</button> -->
+
+      <!-- Button -->
+      <!-- <a class="btn btn-primary d-block d-lg-inline-block ml-lg-3" href="!#">Buy now</a> -->
+
+    </div>
+  </nav>
+
+  <!-- Back To Top Button -->
+  <a href="#top" class="backtotop">
+    <span>Back To Top</span>
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Scroll progress -->
+  <div class="scroll-progress">
+    <div class="sp-left">
+      <div class="sp-inner"></div>
+      <div class="sp-inner progress"></div>
+    </div>
+    <div class="sp-right">
+      <div class="sp-inner"></div>
+      <div class="sp-inner progress"></div>
+    </div>
+  </div>
+
+  <!-- Fullpage content -->
+  <div class="ln-fullpage" data-navigation="true">
+
+    <!-- Buku Tamu -->
+    <section style="height: 100vh;" class="ln-section d-xl-flex bg-light" data-anchor="bukutamu" data-tooltip="bukutamu"
+      data-ui="dark" data-navbar="navbar-light">
+      <div class="container align-self-center">
+        <div class="row">
+          <div class="container col-12 col-lg-5 mb-2 mb-lg-0">
+            <div class="col-12">
+              <h2 class="mb-4 animated text-center" data-animation="fadeInUp"><b>Buku Tamu</b></h2>
+              <p class="animated text-center" data-animation="fadeInUp" data-animation-delay="150">Mohon berdiri di depan kamera dan
+                klik Take Snapshot, lalu mengisi buku tamu, Terimakasih...</p>
+            </div>
+            <div class="d-flex justify-content-center animated mt-4" data-animation="fadeInUp" data-animation-delay="150">
+              <div id="my_camera"></div>
+            </div>
+            <div class="d-flex justify-content-center mt-5 mb-5">
+              <input class="btn btn-soft-primary mr-3 scrollto animated" data-animation="fadeInUp"
+                data-animation-delay="400" type=button value="Take Snapshot" onClick="take_snapshot()">
+            </div>
+            <div id="results"></div>
+          </div>
+          <div class="col-12 col-lg-6 animated" data-animation="fadeInUp" data-animation-delay="150">
+            <div class="contact-form">
+              <form class="mb-0" id="form" name="form" enctype="multipart/form-data" action="/tamu" method="post" autocomplete="off">
+                <div class="form-row">
+
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <input type="text" id="name" name="name" placeholder="Nama Lengkap" class="form-control required">
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <input type="email" id="email" name="email" placeholder="Email" class="form-control required">
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <input type="text" id="nik" name="nik" placeholder="NIK" class="form-control required">
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <input type="text" id="nohp" name="nohp" placeholder="No Telepon" class="form-control required">
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="form-group">
+                      <input type="text" id="keperluan" name="keperluan" placeholder="Keperluan" class="form-control" readonly>
+                    </div>
+                  </div>
+
+                  <input type="hidden" id="ttd" name="ttd" >
+                  <input type="hidden" id="foto" name="foto" >
+                  <input type="hidden" id="kode" name="kode" value="{{kode}}" >
+
+                  <div class="col-12">
+                    <div class="form-group">
+                      <textarea type="text" id="alamat" name="alamat" placeholder="Alamat" class="form-control"
+                        rows="5"></textarea>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-6">
+                          <p>Tanda Tangan</p>
+                          <canvas style="border: 3px dotted #3b3b3b; border-radius: 15px;cursor: crosshair; background-color:#FFF;"
+                            id="sig-canvas" height="150">
+                          </canvas>
+                        </div>
+                        <div class="d-flex col-6 align-items-end">
+                          <!-- <button class="btn btn-link " id="sig-submitBtn">Submit Signature</button> -->
+                          <button class="btn btn-link ml-5" id="sig-clearBtn">Clear Signature</button>
+                        </div>
+                      </div>
+                    </div>
+                    
+                  </div>
+
+                  <div class="col-12 d-flex justify-content-center">
+                    <input class="btn btn-primary" type="submit" id="submit" name="submit">
+                  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Fullpage - Copyright -->
+  <div class="ln-copyright text-right">
+    <p>© 2020 Lana - All Rights Reserved - <a href="#!">Terms of Service</a></p>
+  </div>
+
+  
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"
+    integrity="sha512-dQIiHSl2hr3NWKKLycPndtpbh5iaHLo6MwrXm7F0FM5e+kL2U16oE9uIwPHUl6fQBeCthiEuV/rzP3MiAB8Vfw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- Libs JS -->
+  <script src="/static/assets/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="/static/assets/vendor/popper.js/dist/popper.min.js"></script>
+  <script src="/static/assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/static/assets/vendor/fullPage.js/dist/scrolloverflow.min.js"></script>
+  <script src="/static/assets/vendor/fullPage.js/dist/jquery.fullpage.min.js"></script>
+  <script src="/static/assets/vendor/waypoints/lib/jquery.waypoints.min.js"></script>
+  <script src="/static/assets/vendor/jquery-smooth-scroll/jquery.smooth-scroll.min.js"></script>
+  <script src="/static/assets/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+  <script src="/static/assets/vendor/jquery-form/dist/jquery.form.min.js"></script>
+  <script src="/static/assets/vendor/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+  <script src="/static/assets/vendor/jQuery.countdown/dist/jquery.countdown.min.js"></script>
+  <script src="/static/assets/vendor/granim.js/dist/granim.min.js"></script>
+  <script src="/static/assets/vendor/slick/slick.min.js"></script>
+  <script src="/static/assets/vendor/vegas/vegas.min.js"></script>
+
+  <!-- Theme JS -->
+  <script src="/static/assets/js/main.js"></script>
+  <script src="/static/assets/js/signature.js"></script>
+  <script>
+    let state = {
+        foto:null,
+        jenistamu:null
+    }
+    
+    let kategoriTamu = {
+        a1:{
+            title:"Kunjungan / Koordinasi",
+            audio:"a1.mp3"
+        },
+        a2:{
+            title:"Meeting / Rapat",
+            audio:"a2.mp3"
+        },
+        b1:{
+            title:"Tamu Kepala Stasiun Meteorologi",
+            audio:"b1.mp3"
+        },
+        b2:{
+            title:"Tamu Kepala Stasiun Geofisika",
+            audio:"b2.mp3"
+        },
+        c1:{
+            title:"Tamu TU Stasiun Meteorologi",
+            audio:"c1.mp3"
+        },
+        c2:{
+            title:"Tamu TU Stasiun Geofisika",
+            audio:"c2.mp3"
+        },
+        d1:{
+            title:"Permintaan Data Meteorologi",
+            audio:"d1.mp3"
+        },
+        d2:{
+            title:"Permintaan Data Meteorologi Maritim",
+            audio:"d2.mp3"
+        },
+        d3:{
+            title:"Permintaan Data Klimatologi",
+            audio:"d3.mp3"
+        },
+        d4:{
+            title:"Permintaan Data Geofisika",
+            audio:"d4.mp3"
+        },
+        e:{
+            title:"Tamu Stasiun Geofisika Kupang",
+            audio:"e.mp3"
+        },
+        f:{
+            title:"Tamu Lain-lain",
+            audio:"f.mp3"
+        }
+    }
+    
+    navigator.getUserMedia({ video: true}, function (stream) {
+        if (stream.getVideoTracks().length > 0 ) {
+            //code for when none of the devices are available                       
+        } else {
+           // code for when both devices are available
+        }
+    }, function (error) { 
+      // code for when there is an error
+    });
+    Webcam.set({
+        width: 360,
+        height: 240,
+        image_format: 'jpeg',
+        jpeg_quality: 90
+    });
+    Webcam.attach( '#my_camera' );
+    
+    function take_snapshot() {
+        // take snapshot and get image data
+        Webcam.snap( function(data_uri) {
+            // display results in page
+            state.foto = data_uri
+            $('#foto').val(data_uri.split(",")[1])
+            document.getElementById('my_camera').innerHTML = 
+                '<img class="w3-animate-opacity" src="'+data_uri+'"/>';
+        } );
+    }
+    
+    $(document).ready(function () {
+        $('#submit').click(()=>{
+            take_snapshot()
+        });
+    
+        var tabledata = [
+            {id:1, pnbp:"Informasi Cuaca untuk Pelayaran", satuan:"per route \nper hari", tarif:"Rp. 250.000,00"},
+            {id:2, pnbp:"Informasi Cuaca untuk Pelabuhan", satuan:"per route \nper hari", tarif:"Rp. 225.000,00"},
+            {id:3, pnbp:"Informasi Cuaca untuk Pengeboran Lepas", satuan:"per route \nper hari", tarif:"Rp. 330.000,00"},
+        ];
+    
+        var table = new Tabulator("#example-table", {
+            data:tabledata, //assign data to table,
+            height:500,
+            layout:"fitColumns", //fit columns to width of table (optional)
+            columns:[ //Define Table Columns
+                {title:"Jenis Penerimaan Negara Bukan Pajak", field:"pnbp", width:300},
+                {title:"Satuan", field:"satuan", width:150},
+                {title:"Tarif", field:"tarif", width:150},
+            ],
+        });
+        
+        //trigger an alert message when the row is clicked
+        table.on("rowClick", function(e, row){ 
+            alert("Row " + row.getData().id + " Clicked!!!!");
+        });
+    });
+    
+    $("#keperluan").val(kategoriTamu["{{kode}}"].title)
+    $("#kode").val("{{kode}}")
+    state.jenistamu = kategoriTamu["{{kode}}"].title
+    console.log("{{kode}}")
+    
+    const setJenis = (val) => {
+        state.jenistamu = kategoriTamu[val].title
+        $("#keperluan").val(kategoriTamu[val].title)
+        $("#kode").val(val)
+    }
+  </script>
+</body>
+
+</html>
