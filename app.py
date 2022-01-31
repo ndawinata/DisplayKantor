@@ -60,6 +60,10 @@ def handleTamu():
         mydb.commit()
         
         return render_template('success.html', file=kode)
+    
+@app.route('/ptsp', methods=['GET', 'POST'])
+def ptsp():
+    return render_template('ptsp.html')
 
 @app.route('/bukutamu/<kode>', methods=['GET', 'POST'])
 def bukutamu(kode):
